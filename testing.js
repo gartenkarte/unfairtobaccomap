@@ -42,6 +42,21 @@ function api_to_leaflet_layer ( dictionary ) {
   return result;
 }
 
+function condense_geojson_locations ( element ) {
+  var callback = [];
+  callback[0] = unfairtobacco.locations[element].longitude;
+  callback[1] = unfairtobacco.locations[element].latitude;
+  //console.log(callback);
+  return callback;
+}
+
+
+function replace_geojson_locations ( element ) {
+  var copy = $.extend(true, {}, element, copy);
+  copy.locations = $.map(element.locations, condense_geojson_locations);
+  return copy;
+}
+
 function render_to_geojson ( projects ) {
   var geojson_projects = {};
   geojson_projects['type'] = 'FeatureCollection';
@@ -55,7 +70,7 @@ function render_to_geojson ( projects ) {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": replace_locations(obj).locations
+        "coordinates": replace_geojson_locations(obj).locations
       },
       "properties": {
         "title": projects[k].name,
