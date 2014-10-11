@@ -8,7 +8,7 @@ var baseLayers = {
 
 L.control.layers(baseLayers).addTo(map);
 
-
+// POPUPS
 
 function OnEachFeature(feature, layer){
     if (feature.properties && feature.properties.name) {
@@ -23,7 +23,17 @@ function OnEachFeature(feature, layer){
     }
 };
 
-
+/*
+function OnEachFeature(feature, layer){
+    if (feature.properties.name) {
+        layer.bindPopup('<b>' + feature.properties.name + '</b>' + '<br>' +
+                        feature.properties.desc + '<br>' +
+                        '<b>' + 'Website: ' + '</b>' + feature.properties.url + '<br>' +
+                        '<b>' +'Contact: ' + '</b>' + feature.properties.mail
+                        );
+        }
+    };
+*/
 
 function condense_geojson_locations ( element ) {
   var callback = [];
@@ -92,4 +102,21 @@ $.getJSON( "data.json", function( data ) {
 
 
 
+
+var countries;
+
+$.getJSON( "country_layer.json", function( data ) {
+  
+  countries = data;
+  
+  //projekte_geojson = render_to_geojson(unfairtobacco.projects);
+  //console.log(projekte_geojson);
+  /*
+  var Layer_project = L.geoJson(projekte_geojson, {
+      onEachFeature: OnEachFeature
+  }).addTo(map);
+  */
+  countries.addTo(map);
+
+});
 
