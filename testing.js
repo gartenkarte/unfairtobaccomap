@@ -14,7 +14,7 @@ function condense_locations ( element ) {
   var callback = [];
   callback[0] = unfairtobacco.locations[element].latitude;
   callback[1] = unfairtobacco.locations[element].longitude;
-  console.log(callback);
+  //console.log(callback);
   return callback;
 }
 
@@ -42,16 +42,47 @@ function api_to_leaflet_layer ( dictionary ) {
   return result;
 }
 
+function render_to_geojson ( projects ) {
+  var geojson_projects = {};
+  geojson_projects['type'] = 'FeatureCollection';
+  geojson_projects['features'] = [];
 
+
+  for (var k in projects) {
+    var obj = projects[k];
+    if (obj.locations[0] != null) {
+      var newFeature = {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": replace_locations(obj).locations
+      },
+      "properties": {
+        "title": projects[k].name,
+        "description": projects[k].description
+      }
+    };
+    geojson_projects['features'].push(newFeature);  
+    };
+    
+  };
+  return geojson_projects;
+}
 
 var unfairtobacco;
 var projekte_layer;
 $.getJSON( "data.json", function( data ) {
   
   unfairtobacco = data;
+  
   projekte_layer = api_to_leaflet_layer(unfairtobacco.projects);
   console.log(projekte_layer);
+  
+  projekte_geojson = render_to_geojson(unfairtobacco.projects);
+  //console.log(projekte_geojson);
+
   projects_in_layer = L.layerGroup(projekte_layer);
-  console.log(projects_in_layer);
+  //console.log(projects_in_layer);
+  
   projects_in_layer.addTo(map);
 });
