@@ -75,14 +75,35 @@ $.getJSON( "data.json", function( data ) {
   
   unfairtobacco = data;
   
-  projekte_layer = api_to_leaflet_layer(unfairtobacco.projects);
-  console.log(projekte_layer);
+  //projekte_layer = api_to_leaflet_layer(unfairtobacco.projects);
+  //console.log(projekte_layer);
   
   projekte_geojson = render_to_geojson(unfairtobacco.projects);
   //console.log(projekte_geojson);
 
-  projects_in_layer = L.layerGroup(projekte_layer);
+  //projects_in_layer = L.layerGroup(projekte_layer);
   //console.log(projects_in_layer);
   
-  projects_in_layer.addTo(map);
+  //projects_in_layer.addTo(map);
+
+    var Layer_project = L.geoJson(projekte_geojson, {
+        onEachFeature: OnEachFeatureFunction
+    }).addTo(map);
+
 });
+
+
+
+
+function OnEachFeatureFunction(feature, marker){
+    if (feature.properties.name) {
+        marker.bindPopup('<b>' + feature.properties.name + '</b>'
+                        );
+        marker.on('mouseover', function () {
+            this.openPopup();
+                        });
+        marker.on('mouseout', function () {
+            this.closePopup();
+                        });
+    }
+};
