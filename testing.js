@@ -11,8 +11,8 @@ L.control.layers(baseLayers).addTo(map);
 
 
 function OnEachFeature(feature, layer){
-    if (feature.properties && feature.properties.title) {
-        layer.bindPopup('<b>' + feature.properties.title + '</b>'
+    if (feature.properties && feature.properties.name) {
+        layer.bindPopup('<b>' + feature.properties.name + '</b>'
                         );
         layer.on('mouseover', function () {
             this.openPopup();
@@ -55,8 +55,14 @@ function render_to_geojson ( projects ) {
         "coordinates": replace_geojson_locations(obj).locations
       },
       "properties": {
-        "title": projects[k].name,
-        "description": projects[k].description
+        "id": projects[k].ID,
+        "name": projects[k].name,
+        "desc": projects[k].description,
+        "url": projects[k].website_url,
+        "mail": projects[k].contact_email,
+        "orgs": projects[k].organisations,
+        "areas": projects[k].countries
+
       }
     };
     geojson_projects['features'].push(newFeature);  
