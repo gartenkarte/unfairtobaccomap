@@ -103,20 +103,99 @@ $.getJSON( "data.json", function( data ) {
 
 
 
-var countries;
+///////////////// hinzufügen und mergen der Länder-GEOJSONs
 
-$.getJSON( "country_layer.json", function( data ) {
+
+
+
+function iso_render_to_array ( countries ) {
+    var countries_ISO = [];
+
+    for (var k in countries) {
+      var obj = countries[k];
+      if (countries.iso_code != null)
+        countries_ISO.push();
+    }
+  return countries_ISO;
+};
+
+
+function merge_countries_geojson (country) {
+  var mergedJSON = {};
+  mergedJSON['type'] = 'FeatureCollection';
+  mergedJSON['features'] = [];
+
+  for (var k in country) {
+    var obj = country[k];
+    if (obj.properties.ISO2 != null) {
+      var newFeature = {
+        "type": "Feature",
+        "properties": {
+          "ISO2": country[k].ISO2,
+          "Name": country[k].NAME,
+          "LON": country[k].LON,
+          "LAT": country[k].LAT
+        },
+        "geometry" {
+          "type": "MultiPolygon",
+          "coordinates": country[k].coordinates
+        }
+      };
+      mergedJSON['features'].push(newFeature);  
+    };
+  };
+  return mergedJSON;
+}
+
+
+function get_And_Merge_Countries_to_geoJSON ( array ) {
+
+    for (i = 0, i <= arrayCountriesISO.length, ++i) {
+      $.getJSON( array[i] + ".geojson", function( data ) {
+
+        country = data;
+
+        countriesMerged = merge_countries_geojson(country);    
+      }
+  return countriesMerged;
+};
+  
+
+var unfairtobaccoCountries;
+var arrayCountries;
+var geoJsonCountries;
+
+$.getJSON( "data.json", function( data ) {
+  
+  unfairtobacco = data;
+  
+  arrayCountriesISO = iso_render_to_array(unfairtobacco.countries);
+
+  geoJsonCountries = get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
+
+  var Layer_countries = L.geoJson(geoJsonCountries, {
+      onEachFeature: OnEachFeature
+  }).addTo(map);
+
+});
+
+
+
+
+/*
+  var countries;
+
+$.getJSON( "de.geojson", function( data ) {
   
   countries = data;
   
-  //projekte_geojson = render_to_geojson(unfairtobacco.projects);
-  //console.log(projekte_geojson);
-  /*
-  var Layer_project = L.geoJson(projekte_geojson, {
+  var Layer_countries = L.geoJson(countries, {
       onEachFeature: OnEachFeature
   }).addTo(map);
-  */
-  countries.addTo(map);
+  
 
 });
+*/
+
+
 
