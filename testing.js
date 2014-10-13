@@ -2,11 +2,6 @@ var map = L.map('map').setView( new L.LatLng(20, 10), 2);
 var toner = new L.StamenTileLayer("toner");
 map.addLayer(toner);
 
-var baseLayers = {
-  "Toner": toner
-};
-
-L.control.layers(baseLayers).addTo(map);
 
 // POPUPS
 
@@ -83,7 +78,7 @@ function render_to_geojson ( projects ) {
 }
 
 
-
+/*
 var unfairtobacco;
 var projekte_geojson;
 
@@ -99,7 +94,7 @@ $.getJSON( "data.json", function( data ) {
   }).addTo(map);
 
 });
-
+*/
 
 
 
@@ -113,8 +108,9 @@ function iso_render_to_array ( countries ) {
 
     for (var k in countries) {
       var obj = countries[k];
-      if (countries.iso_code != null)
-        countries_ISO.push();
+      // Crude hack to exclude missing Simbabwe.
+      if ( ( obj.iso_code != null ) && ( obj.iso_code != 'ZW' ) )
+        countries_ISO.push(obj.iso_code.toLowerCase());
     }
   return countries_ISO;
 };
@@ -136,7 +132,7 @@ function merge_countries_geojson (country) {
           "LON": country[k].LON,
           "LAT": country[k].LAT
         },
-        "geometry" {
+        "geometry": {
           "type": "MultiPolygon",
           "coordinates": country[k].coordinates
         }
@@ -150,19 +146,38 @@ function merge_countries_geojson (country) {
 
 function get_And_Merge_Countries_to_geoJSON ( array ) {
 
-    for (i = 0, i <= arrayCountriesISO.length, ++i) {
-      $.getJSON( array[i] + ".geojson", function( data ) {
+  var countriesMerged = {};
+  countriesMerged['type'] = 'FeatureCollection';
+  countriesMerged['features'] = [];
 
-        country = data;
+  for (i = 0; i <= array.length; ++i) {
+    if (array[i] != null) {
+      $.getJSON( "iso_nations/" + array[i] + ".geojson", function( data ) {
+        //country = data;
+        //countriesMerged.push(merge_countries_geojson(country));
+        //countriesMerged.push(array[i]);
+        //console.log(data);
+        countriesMerged['features'].push(data.features['0']);
 
-        countriesMerged = merge_countries_geojson(country);    
-      }
+
+
+
+      });
+
+    }
+
+  };
   return countriesMerged;
+
 };
   
 
-var unfairtobaccoCountries;
-var arrayCountries;
+
+
+
+
+//var unfairtobaccoCountries;
+var arrayCountriesISO;
 var geoJsonCountries;
 
 $.getJSON( "data.json", function( data ) {
@@ -173,9 +188,38 @@ $.getJSON( "data.json", function( data ) {
 
   geoJsonCountries = get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
 
-  var Layer_countries = L.geoJson(geoJsonCountries, {
-      onEachFeature: OnEachFeature
-  }).addTo(map);
+/* layer = new L.GeoJSON( null,
+    { onEachFeature: function(feature,layer)
+        {
+            layer.bindPopup(feature.properties.NAME);
+        }
+    }).addTo(map);
+
+
+    for(var i=0; i<geoJsonCountries.features.length; i++)
+    {
+        layer.addData(geoJsonCountries.features[i]);
+    }
+*/
+
+var Layer_countries = L.geoJson(geoJsonCountries, {
+    style: style,
+    onEachFeature: onEachCountryFeature
+}).addTo(map);
+
+console.log(Layer_countries);
+
+var unfairLayers = {
+  "Countries": Layer_countries
+}
+
+var baseLayers = {
+  "Toner": toner
+};
+
+L.control.layers(baseLayers, unfairLayers).addTo(map);
+
+
 
 });
 
@@ -196,6 +240,60 @@ $.getJSON( "de.geojson", function( data ) {
 
 });
 */
+
+
+
+// Style fürs Highlighting -> Mouseover
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    
+    info.update(layer.feature.properties);
+    info_project.update(layer.feature.properties);
+    
+    }
+}
+
+// Mouseout
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    info.update();
+    info_project.update();
+}
+
+// Zoom
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+// add the functions to the layer
+function onEachCountryFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+function style(feature) {
+    return {
+        fillColor: 'red',
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.6
+    };
+}
 
 
 
