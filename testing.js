@@ -24,18 +24,16 @@ function createModal(props) {
   var modal = document.createElement("div");
   var modal_url = props.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
   
-  partial_title = '<h2 class="modal-title">'+ props.name +'</h2></div>';
-
   modal.id = modal_url;
   modal.className = "modal fade";
   modal.innerHTML = '<div class="modal-dialog">'
     + '<div class="modal-content">'
     + '<div class="modal-header">'
-    + '<a href="#"><button>&times;</button></a>'
+    + '<a href="#" class="button">&times;</a><strong>'
     + ( ( props.url != '') ?
-      '<a href="'+ props.url+'">' + partial_title + '</a></p>' : 
-      partial_title)
-    + '<div class="modal-body">'
+      '<a href="'+ props.url+'" target="_blank" class="modal-title">' + props.name + '</a>' : 
+      props.name)
+    + '</strong></div><div class="modal-body">'
     + ( ( props.orgs != []) ? renderOrganizations(props.orgs) : '')
     + ( ( props.desc != '') ? '<p>'+ props.desc +'</p>' : '')
     + ( ( props.mail != '') ? '<p>'+ props.mail +'</p>' : '')
@@ -63,10 +61,10 @@ function renderOrganizations ( orgs ) {
         partial = '';
         break; 
     case 1:
-        partial = '<em><strong>Organization:</em></strong>';
+        partial = '<em>Organization:</em>';
         break; 
     default: 
-        partial = '<em><strong>Organizations:</em></strong>';
+        partial = '<em>Organizations:</em>';
   }
   
   for (i = 0; i <= orgs.length; ++i) {
@@ -209,8 +207,8 @@ function highlightFeature(e) {
     var layer = e.target;
 
     layer.setStyle({
-        weight: 5,
-        color: '#666',
+        weight: 3,
+        color: '#c45321',
         dashArray: '',
         fillOpacity: 0.7
     });
@@ -318,7 +316,7 @@ function renderGeometry ( countries ) {
 
 function style(feature) {
     return {
-        fillColor: 'red',
+        fillColor: '#c45321',
         weight: 1,
         opacity: 1,
         color: 'white',

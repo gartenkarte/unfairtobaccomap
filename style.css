@@ -1,12 +1,14 @@
 /* Styles go here */
 
-p {
+.modal-body p {
   margin: 0;
   margin-top: 1em;
 }
 
-h2 {
+a.modal-title {
   margin: 0;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .modal-header a[href="#"] {
