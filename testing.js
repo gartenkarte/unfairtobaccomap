@@ -9,6 +9,10 @@ var map = L.map('map', {
   layers: [lyrk]
 }).setView( new L.LatLng(20, 10), 2);
 
+
+
+
+
 // POPUPS
 
 function createModal(geojson) {
@@ -34,7 +38,8 @@ function renderPopup(feature, url) {
   return partial_head + link_start + feature.properties.name + link_end + partial_foot;
 }
 
-function OnEachFeature(feature, layer){
+
+function onEachProjectFeature(feature, layer){
   if (feature.properties && feature.properties.name) {
       var url = feature.properties.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
       createModal(feature);
@@ -50,6 +55,21 @@ function OnEachFeature(feature, layer){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function condenseLocations ( element ) {
   var callback = [];
   callback[0] = unfairtobacco.locations[element].longitude;
@@ -60,6 +80,16 @@ function condenseLocations ( element ) {
 function replaceLocations ( element ) {
   var copy = $.extend(true, {}, element, copy);
   copy.locations = $.map(element.locations, condenseLocations);
+  return copy;
+}
+
+function condenseOrganizations ( e ) {
+  return unfairtobacco.organisations[e];
+}
+
+function replaceOrganizations ( e ) {
+  var copy = $.extend(true, {}, e, copy);
+  copy.organisations = $.map(e.organisations, condenseOrganizations);
   return copy;
 }
 
@@ -79,13 +109,13 @@ function renderLayer ( projects ) {
         "coordinates": replaceLocations(obj).locations
       },
       "properties": {
-        "id": projects[k].ID,
-        "name": projects[k].name,
-        "desc": projects[k].description,
-        "url": projects[k].website_url,
-        "mail": projects[k].contact_email,
-        "orgs": projects[k].organisations,
-        "areas": projects[k].countries
+        "id": obj.ID,
+        "name": obj.name,
+        "desc": obj.description,
+        "url": obj.website_url,
+        "mail": obj.contact_email,
+        "orgs": replaceOrganizations(obj).organisations,
+        "areas": obj.countries
 
       }
     };
@@ -93,8 +123,9 @@ function renderLayer ( projects ) {
     };
     
   };
+  console.log(geojson_projects);
   return L.geoJson(geojson_projects, {
-      onEachFeature: OnEachFeature
+      onEachFeature: onEachProjectFeature
   });
 }
 
@@ -116,25 +147,107 @@ $.getJSON( "data.json", function( data ) {
 
 
 
+
+
+
+
+
+
+
+
+
+// Style fürs Highlighting -> Mouseover
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    
+    info.update(layer.feature.properties);
+    //info_project.update(layer.feature.properties);
+    
+    }
+}
+
+// Mouseout
+function resetHighlight(e) {
+    CountryLayer.resetStyle(e.target);
+    info.update();
+//    info_project.update();
+}
+
+// Zoom
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+
+// add the functions to the layer
+function onEachCountryFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+
+
+
+//%%%%% INFOKASTEN %%%%//
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%////////////////
+
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Alternatives to Tobacco</h4>' +  
+        (props ?
+        '<b>' + props.name + '</b><br />' + 'Gini Coefficient: ' + props.gini_coefficient + '<br>' 
+                                          + 'Global Hunger Index: ' + props.global_hunger_index + '<br>'
+                                          + 'Cigarette Consumption per capita: ' + props.cigarette_consumption_per_capita + '<br>'
+                                          + 'Land devoted to growing tobacco: ' + props.land_devoted_to_tobacco + '<br>'
+                                          + 'sources: ' + props.sources
+        : '<i>Hint:</i> Move Mouse over a coloured area,<br />click the icons.');
+};
+
+info.addTo(map);
+
+
+
+
+
 ///////////////// hinzufügen der Länder-GEOJSONs
 
-
+var CountryLayer;
 function displayCountries(unfair) {
   return function (geojson) {
-    enrichGeometry(geojson, unfair).addTo(map);
+    var merge = $.extend(true, {}, geojson.features[0].properties, unfair);
+    var copy = $.extend(true, {}, geojson);
+    copy.features[0].properties = merge;
+    CountryLayer = L.geoJson(copy, {
+      style: style,
+      onEachFeature: onEachCountryFeature
+    })
+    CountryLayer.addTo(map);
   };
 }
 
-function enrichGeometry(geojson, unfair) {
 
-  var merge = $.extend(true, {}, geojson.features[0].properties, unfair)
-
-  return L.geoJson(geojson, {
-    style: style,
-    //TODO onEachFeature: OnEachCountryFeature
-  });
-
-};
 
 // get geoJSON anhand des ISO-Array
 function renderGeometry ( countries ) {
@@ -145,6 +258,7 @@ function renderGeometry ( countries ) {
 
         // http://stackoverflow.com/questions/6129145/pass-extra-parameter-to-jquery-getjson-success-callback-function
         $.getJSON("countries/" + obj.iso_code.toLowerCase() + ".geojson", displayCountries(obj));
+        
       }
     };  
 }
