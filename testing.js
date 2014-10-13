@@ -8,50 +8,178 @@ var baseLayers = {
 
 L.control.layers(baseLayers).addTo(map);
 
+// POPUPS
 
+function OnEachFeature(feature, layer){
+    if (feature.properties && feature.properties.name) {
+        layer.bindPopup('<b>' + feature.properties.name + '</b>'
+                        );
+        layer.on('mouseover', function () {
+            this.openPopup();
+                        });
+        layer.on('mouseout', function () {
+            this.closePopup();
+                        });
+    }
+};
 
-function condense_locations ( element ) {
+/*
+function OnEachFeature(feature, layer){
+    if (feature.properties.name) {
+        layer.bindPopup('<b>' + feature.properties.name + '</b>' + '<br>' +
+                        feature.properties.desc + '<br>' +
+                        '<b>' + 'Website: ' + '</b>' + feature.properties.url + '<br>' +
+                        '<b>' +'Contact: ' + '</b>' + feature.properties.mail
+                        );
+        }
+    };
+*/
+
+function condense_geojson_locations ( element ) {
   var callback = [];
-  callback[0] = unfairtobacco.locations[element].latitude;
-  callback[1] = unfairtobacco.locations[element].longitude;
-  console.log(callback);
+  callback[0] = unfairtobacco.locations[element].longitude;
+  callback[1] = unfairtobacco.locations[element].latitude;
+  //console.log(callback);
   return callback;
 }
 
-function replace_locations ( element ) {
+function replace_geojson_locations ( element ) {
   var copy = $.extend(true, {}, element, copy);
-  copy.locations = $.map(element.locations, condense_locations);
+  copy.locations = $.map(element.locations, condense_geojson_locations);
   return copy;
 }
 
-function api_to_leaflet_layer ( dictionary ) {
-  result = [];
+function render_to_geojson ( projects ) {
+  var geojson_projects = {};
+  geojson_projects['type'] = 'FeatureCollection';
+  geojson_projects['features'] = [];
 
-  for (var key in dictionary) {
-    var obj = dictionary[key];
+
+  for (var k in projects) {
+    var obj = projects[k];
     if (obj.locations[0] != null) {
-      result.push(L.marker (replace_locations(obj).locations))
-    }
-/*    for (var prop in obj) {
-      if (obj.hasOwnProperty(prop)){
-        console.log(prop);
-      }
-    } */
-  };
+      var newFeature = {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": replace_geojson_locations(obj).locations
+      },
+      "properties": {
+        "id": projects[k].ID,
+        "name": projects[k].name,
+        "desc": projects[k].description,
+        "url": projects[k].website_url,
+        "mail": projects[k].contact_email,
+        "orgs": projects[k].organisations,
+        "areas": projects[k].countries
 
-  return result;
+      }
+    };
+    geojson_projects['features'].push(newFeature);  
+    };
+    
+  };
+  return geojson_projects;
 }
 
 
 
 var unfairtobacco;
-var projekte_layer;
+var projekte_geojson;
+
 $.getJSON( "data.json", function( data ) {
   
   unfairtobacco = data;
-  projekte_layer = api_to_leaflet_layer(unfairtobacco.projects);
-  console.log(projekte_layer);
-  projects_in_layer = L.layerGroup(projekte_layer);
-  console.log(projects_in_layer);
-  projects_in_layer.addTo(map);
+  
+  projekte_geojson = render_to_geojson(unfairtobacco.projects);
+  console.log(projekte_geojson);
+
+  var Layer_project = L.geoJson(projekte_geojson, {
+      onEachFeature: OnEachFeature
+  }).addTo(map);
+
 });
+
+
+
+
+///////////////// hinzufügen der Länder-GEOJSONs
+
+
+var countries_ISO = [];
+var countries_meta = [];
+
+// erstellt Array mit ISO-Daten der verwiesenen Länder
+function iso_render_to_array ( countries ) {
+
+
+    for (var k in countries) {
+      var obj = countries[k];
+      if (obj.iso_code != null) {
+        countries_ISO.push(countries[k]);
+      };
+    };
+  return countries_ISO;
+}
+
+
+function CreateCountryCallback(unfair) {
+  return function (geojson) {
+    merge_unfair_countries(geojson, unfair);
+  };
+}
+
+function merge_unfair_countries(geojson, unfair) {
+
+  var merge = $.extend(true, {}, geojson.features[0].properties, unfair)
+  console.log(merge);
+
+  var Layer_countries = L.geoJson(geojson, {
+    style: style,
+    //TODO onEachFeature: OnEachCountryFeature
+  }).addTo(map);
+
+};
+
+// get geoJSON anhand des ISO-Array
+function get_And_Merge_Countries_to_geoJSON ( array ) {
+    var countriesMerged = {};
+    var country = {};
+
+    for (i = 0; i <= array.length; ++i) {
+      if ( array[i] != null) {
+        // http://stackoverflow.com/questions/6129145/pass-extra-parameter-to-jquery-getjson-success-callback-function
+        $.getJSON("countries/" + array[i].iso_code.toLowerCase() + ".geojson", CreateCountryCallback(array[i]));
+      }
+    };  
+}
+
+
+var unfairtobaccoCountries;
+var arrayCountries;
+var geoJsonCountries = {};
+
+$.getJSON( "data.json", function( data ) {
+  
+  unfairtobacco = data;
+  
+  arrayCountriesISO = iso_render_to_array(unfairtobacco.countries);
+
+  get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
+
+});
+
+
+
+/////////// Länder hervorhoben
+
+function style(feature) {
+    return {
+        fillColor: 'red',
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.8
+    };
+}
