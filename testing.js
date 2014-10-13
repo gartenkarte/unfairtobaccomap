@@ -6,10 +6,15 @@ var lyrk = L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=701dcc16
 });
 
 var map = L.map('map', {
-  layers: [lyrk]
-}).setView( new L.LatLng(20, 10), 2);
+  layers: [lyrk],
+  center: [20, 10],
+  zoom: 2,
+  minZoom: 2,
+  maxZoom: 18,
+  zoomControl: false
+});
 
-
+map.addControl(new L.Control.ZoomMin());
 
 
 
@@ -72,33 +77,26 @@ function renderOrganizations ( orgs ) {
   return partial + arr.join();
 }
 
-function renderPopup(feature, url) {
-  partial_head = '<h2>'
-  if (feature.properties.url != '') {
-    link_start = '<a href="'+ feature.properties.url +'">';
-    link_end = '</a>'
-  }
-  else {
-    link_start = '';
-    link_end = '';
-  }
-  partial_foot = '</h2><br>' + organizations + '<br><a href="#'+ url +'">Read more</a>';
-  return partial_head + link_start + feature.properties.name + link_end + partial_foot;
-}
-
-
 function onEachProjectFeature(feature, layer){
   if (feature.properties && feature.properties.name) {
       var url = feature.properties.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
       createModal(feature.properties);
 
+      layer.bindPopup('<h3>' + feature.properties.name + '</h3>');
+
+      layer.on('mouseover', function () {
+          this.openPopup();
+      });
+      layer.on('mouseout', function () {
+          this.closePopup();
+      });
+
       /* http://lea.verou.me/2011/05/change-url-hash-without-page-jump/ */
       layer.on('click', function () {
-
             location.hash = '#' + url;
-
       });
   }
+
 };
 
 
@@ -172,12 +170,8 @@ function renderLayer ( projects ) {
     
   };
   console.log(geojson_projects);
-  return L.geoJson(geojson_projects, {
-      onEachFeature: onEachProjectFeature
-  });
+  return geojson_projects;
 }
-
-
 
 var unfairtobacco;
 var projekte_geojson;
@@ -186,7 +180,13 @@ $.getJSON( "data.json", function( data ) {
   
   unfairtobacco = data;
 
-  renderLayer(data.projects).addTo(map);
+  projectJSON = renderLayer(data.projects);
+
+  projectLayer = L.geoJson(projectJSON, {
+      onEachFeature: onEachProjectFeature
+  });
+
+  projectLayer.addTo(map);
 
   renderGeometry(data.countries);
 
