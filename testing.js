@@ -106,49 +106,40 @@ $.getJSON( "data.json", function( data ) {
 ///////////////// hinzufügen der Länder-GEOJSONs
 
 
+var countries_ISO = [];
+var countries_meta = [];
 
 // erstellt Array mit ISO-Daten der verwiesenen Länder
 function iso_render_to_array ( countries ) {
-    var countries_ISO = [];
+
 
     for (var k in countries) {
       var obj = countries[k];
       if (obj.iso_code != null) {
-        countries_ISO.push(countries[k].iso_code.toLowerCase());
+        countries_ISO.push(countries[k]);
       };
     };
   return countries_ISO;
 }
 
 
-/*
-function merge_countries_geojson ( country ) {
-  var mergedJSON = {};
-  mergedJSON['type'] = 'FeatureCollection';
-  mergedJSON['features'] = [];
-
-  for (var k in country) {
-    var obj = country[k];
-    //if (obj.properties.ISO2 != null) {
-      var newFeature = {
-        "type": "Feature",
-        "properties": {
-          "ISO2": country[k].ISO2,
-          "Name": country[k].NAME,
-          "LON": country[k].LON,
-          "LAT": country[k].LAT
-        },
-        "geometry": {
-          "type": "MultiPolygon",
-          "coordinates": country[k].coordinates
-        }
-      };
-      mergedJSON['features'].push(newFeature);  
-   // };
+function CreateCountryCallback(unfair) {
+  return function (geojson) {
+    merge_unfair_countries(geojson, unfair);
   };
-  return mergedJSON;
 }
-*/
+
+function merge_unfair_countries(geojson, unfair) {
+
+  var merge = $.extend(true, {}, geojson.features[0].properties, unfair)
+  console.log(merge);
+
+  var Layer_countries = L.geoJson(geojson, {
+    style: style,
+    //TODO onEachFeature: OnEachCountryFeature
+  }).addTo(map);
+
+};
 
 // get geoJSON anhand des ISO-Array
 function get_And_Merge_Countries_to_geoJSON ( array ) {
@@ -156,21 +147,11 @@ function get_And_Merge_Countries_to_geoJSON ( array ) {
     var country = {};
 
     for (i = 0; i <= array.length; ++i) {
-      $.getJSON("countries/" + array[i] + ".geojson", function( data ) {
-
-        country = data;
-        //console.log(country);
-
-        //countriesMerged = merge_countries_geojson(country);    
-     // };
-     var Layer_countries = L.geoJson(country, {
-      style: style,
-      //onEachFeature: onEachFeature
-      }).addTo(map);
-
-      });
+      if ( array[i] != null) {
+        // http://stackoverflow.com/questions/6129145/pass-extra-parameter-to-jquery-getjson-success-callback-function
+        $.getJSON("countries/" + array[i].iso_code.toLowerCase() + ".geojson", CreateCountryCallback(array[i]));
+      }
     };  
-  //return country;
 }
 
 
@@ -183,14 +164,8 @@ $.getJSON( "data.json", function( data ) {
   unfairtobacco = data;
   
   arrayCountriesISO = iso_render_to_array(unfairtobacco.countries);
-  //console.log(arrayCountriesISO);
 
-  geoJsonCountries = get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
-  //console.log(geoJsonCountries);
-
-  //var Layer_countries = L.geoJson(geoJsonCountries, {
-  //    onEachFeature: OnEachFeature
-  //}).addTo(map);
+  get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
 
 });
 
@@ -208,5 +183,3 @@ function style(feature) {
         fillOpacity: 0.8
     };
 }
-
-
