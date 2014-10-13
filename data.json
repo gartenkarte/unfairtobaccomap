@@ -1,785 +1,777 @@
 {
-  "projects": {
-    "5784": {
-      "ID": "5784",
-      "name": "Tobacco to Bamboo",
-      "description": "The <a href=\" www.tobaccotobamboo.org\">Tobacco to Bamboo project</a> is based in South Nyanza province, Kenya’s most important tobacco growing region. It focuses on bamboo as an alternative crop to tobacco and  extensively supports farmers who wish to switch from tobacco. Four cooperatives have been created to provide agricultural training and technical assistance.  The project provides training on how to process bamboo into furniture, household-utensils or jewelry by using simple hand-tools. Bamboo products can fetch prices up to ten times higher compared to tobacco. The plant also helps restore soil fertility.",
-      "website_url": "www.tobaccotobamboo.org",
-      "contact_email": "tobaccotobamboo@gmail.com",
-      "organisations": [],
-      "countries": [
-        5786
-      ],
-      "locations": [
-        5788
-      ]
+    "countries": {
+        "5783": {
+            "ID": 5783,
+            "cigarette_consumption_per_capita": "3",
+            "gini_coefficient": "31.0",
+            "global_hunger_index": "N/A",
+            "iso_code": "DE",
+            "land_devoted_to_tobacco": "1",
+            "name": "Germany",
+            "region": "Europe/USA",
+            "sources": ""
+        },
+        "5786": {
+            "ID": 5786,
+            "cigarette_consumption_per_capita": "21",
+            "gini_coefficient": "47.7",
+            "global_hunger_index": "18",
+            "iso_code": "KE",
+            "land_devoted_to_tobacco": "144",
+            "name": "Kenya",
+            "region": "Africa",
+            "sources": ""
+        },
+        "5791": {
+            "ID": 5791,
+            "cigarette_consumption_per_capita": "20,642",
+            "gini_coefficient": "54.7",
+            "global_hunger_index": "< 5",
+            "iso_code": "BR",
+            "land_devoted_to_tobacco": "144",
+            "name": "Brazil",
+            "region": "Latin America",
+            "sources": ""
+        },
+        "5808": {
+            "ID": 5808,
+            "cigarette_consumption_per_capita": "154",
+            "gini_coefficient": "32.1",
+            "global_hunger_index": "19.4",
+            "iso_code": "BD",
+            "land_devoted_to_tobacco": "29,869",
+            "name": "Bangladesh",
+            "region": "Asia",
+            "sources": ""
+        },
+        "5809": {
+            "ID": 5809,
+            "cigarette_consumption_per_capita": "2,138",
+            "gini_coefficient": "n/a",
+            "global_hunger_index": "< 5",
+            "iso_code": "LB",
+            "land_devoted_to_tobacco": "8,217",
+            "name": "Lebanon",
+            "region": "North Africa/Middle East",
+            "sources": ""
+        },
+        "5987": {
+            "ID": 5987,
+            "cigarette_consumption_per_capita": "96",
+            "gini_coefficient": "33.9",
+            "global_hunger_index": "29.3",
+            "iso_code": "IN",
+            "land_devoted_to_tobacco": "390000",
+            "name": "India",
+            "region": "Asia",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5989": {
+            "ID": 5989,
+            "cigarette_consumption_per_capita": "260",
+            "gini_coefficient": "44.1",
+            "global_hunger_index": "25.2",
+            "iso_code": "MG",
+            "land_devoted_to_tobacco": "2720",
+            "name": "Madagascar",
+            "region": "Africa",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5990": {
+            "ID": 5990,
+            "cigarette_consumption_per_capita": "48",
+            "gini_coefficient": "43.9",
+            "global_hunger_index": "15.1",
+            "iso_code": "MW",
+            "land_devoted_to_tobacco": "183,052",
+            "name": "Malawi",
+            "region": "Africa",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5991": {
+            "ID": 5991,
+            "cigarette_consumption_per_capita": "539",
+            "gini_coefficient": "46.2",
+            "global_hunger_index": "5.5",
+            "iso_code": "MY",
+            "land_devoted_to_tobacco": "14,406",
+            "name": "Malaysia",
+            "region": "Asia",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5992": {
+            "ID": 5992,
+            "cigarette_consumption_per_capita": "371",
+            "gini_coefficient": "47.2",
+            "global_hunger_index": "<5",
+            "iso_code": "MX",
+            "land_devoted_to_tobacco": "4,312",
+            "name": "Mexico",
+            "region": "Latin America",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5993": {
+            "ID": 5993,
+            "cigarette_consumption_per_capita": "1,628",
+            "gini_coefficient": "36.1",
+            "global_hunger_index": "<5",
+            "iso_code": "TN",
+            "land_devoted_to_tobacco": "1500",
+            "name": "Tunisia",
+            "region": "North Africa/Middle East",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5994": {
+            "ID": 5994,
+            "cigarette_consumption_per_capita": "1,399",
+            "gini_coefficient": "40",
+            "global_hunger_index": "<5",
+            "iso_code": "TR",
+            "land_devoted_to_tobacco": "139,431",
+            "name": "Turkey",
+            "region": "Europe/USA",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5995": {
+            "ID": 5995,
+            "cigarette_consumption_per_capita": "24",
+            "gini_coefficient": "44.3",
+            "global_hunger_index": "19.2",
+            "iso_code": "UG",
+            "land_devoted_to_tobacco": "14000",
+            "name": "Uganda",
+            "region": "Africa",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5996": {
+            "ID": 5996,
+            "cigarette_consumption_per_capita": "1,028",
+            "gini_coefficient": "45",
+            "global_hunger_index": "n/a",
+            "iso_code": "US",
+            "land_devoted_to_tobacco": "143320",
+            "name": "USA",
+            "region": "Europe/USA",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        },
+        "5997": {
+            "ID": 5997,
+            "cigarette_consumption_per_capita": "189",
+            "gini_coefficient": "50.1",
+            "global_hunger_index": "16.5",
+            "iso_code": "ZW",
+            "land_devoted_to_tobacco": "79917",
+            "name": "Zimbabwe",
+            "region": "Africa",
+            "sources": "Worldbank GHI, www.tobaccoatlas.org"
+        }
     },
-    "5790": {
-      "ID": "5790",
-      "name": "National Programme for Diversification in Tobacco Growing Areas",
-      "description": "Since its creation in 2005, the National Programme for Diversification in Tobacco Growing Areas has helped 45,000 farming families diversify. The programme is run by the Secretariat for Farming Families (SAF) through the Ministry of Agrarian Development (MDA). The state-funded programme currently supports 11,200 households.  Tobacco farmers can choose from a wide array of alternative activities, for which technical training and assistance is provided. Alternatives include milk, grape juice, coffee, dairy and fish farming. The programme primarily aims to improve food security for smallholder farmers, focusing on diversification rather than crop substitution.",
-      "website_url": "http://comunidades.mda.gov.br/portal/saf/programas/projetosespeciais/2308129",
-      "contact_email": "",
-      "organisations": [
-        5792
-      ],
-      "countries": [
-        5791
-      ],
-      "locations": [
-        5819
-      ]
+    "locations": {
+        "5788": {
+            "ID": 5788,
+            "latitude": "-1.3750813",
+            "longitude": "37.99521440000001",
+            "name": "Kitui/Kenya"
+        },
+        "5817": {
+            "ID": 5817,
+            "latitude": "23.9",
+            "longitude": "89.13999999999999",
+            "name": "Kushtia District"
+        },
+        "5818": {
+            "ID": 5818,
+            "latitude": "23.810332",
+            "longitude": "90.41251809999994",
+            "name": "Dhaka"
+        },
+        "5819": {
+            "ID": 5819,
+            "latitude": "-30.7010544",
+            "longitude": "-52.10687949999999",
+            "name": "Dom Feliciano"
+        },
+        "5820": {
+            "ID": 5820,
+            "latitude": "-27.5949884",
+            "longitude": "-48.54817430000003",
+            "name": "Florianopolis"
+        },
+        "5821": {
+            "ID": 5821,
+            "latitude": "33.8886289",
+            "longitude": "35.49547940000002",
+            "name": "Beirut"
+        },
+        "5825": {
+            "ID": 5825,
+            "latitude": "49.122961",
+            "longitude": "8.204054000000042",
+            "name": "Herxheim-Hayna"
+        },
+        "6031": {
+            "ID": 6031,
+            "latitude": "24.880095",
+            "longitude": "102.83289200000002",
+            "name": "Kunming"
+        },
+        "6032": {
+            "ID": 6032,
+            "latitude": "17.0236378",
+            "longitude": "81.78417030000003",
+            "name": "Rajahmundry"
+        },
+        "6033": {
+            "ID": 6033,
+            "latitude": "13.0509972",
+            "longitude": "80.22797630000002",
+            "name": "Chennai"
+        },
+        "6034": {
+            "ID": 6034,
+            "latitude": "-18.933333",
+            "longitude": "47.516666999999984",
+            "name": "Antananarivo"
+        },
+        "6035": {
+            "ID": 6035,
+            "latitude": "6.093201",
+            "longitude": "102.27330499999994",
+            "name": "Kota Bharu"
+        },
+        "6037": {
+            "ID": 6037,
+            "latitude": "19.3685426",
+            "longitude": "-99.16360510000004",
+            "name": "Mexico City"
+        },
+        "6038": {
+            "ID": 6038,
+            "latitude": "48.8333902",
+            "longitude": "2.3465728999999556",
+            "name": "Paris"
+        },
+        "6039": {
+            "ID": 6039,
+            "latitude": "39.9160554",
+            "longitude": "32.80178209999997",
+            "name": "Ankara"
+        },
+        "6040": {
+            "ID": 6040,
+            "latitude": "0.44",
+            "longitude": "32.60000000000002",
+            "name": "Kasangati"
+        },
+        "6041": {
+            "ID": 6041,
+            "latitude": "0.3217848",
+            "longitude": "32.58101080000006",
+            "name": "Kampala"
+        },
+        "6042": {
+            "ID": 6042,
+            "latitude": "37.2354011",
+            "longitude": "-77.42169949999999",
+            "name": "Petersburg"
+        },
+        "6043": {
+            "ID": 6043,
+            "latitude": "-18.536667",
+            "longitude": "32.12472200000002",
+            "name": "Rusape"
+        },
+        "6044": {
+            "ID": 6044,
+            "latitude": "-13.983333",
+            "longitude": "33.78333299999997",
+            "name": "Lilongwe"
+        }
     },
-    "5806": {
-      "ID": "5806",
-      "name": "WBB Trust Seminar on Alternative Livelihoods",
-      "description": "In 2012 the WBB Trust organised a seminar for tobacco farmers on alternative livelihoods to tobacco.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        5805
-      ],
-      "countries": [
-        5808
-      ],
-      "locations": [
-        5818
-      ]
+    "organisations": {
+        "5792": {
+            "ID": 5792,
+            "abbreviation": "MDA",
+            "name": "Brazilian Ministry of Agrarian Development",
+            "website_url": "www.mda.gov.br"
+        },
+        "5804": {
+            "ID": 5804,
+            "abbreviation": "BATA",
+            "name": "Bangladesh Anti Tobacco Alliance",
+            "website_url": "http://www.bata.net.bd/information.php?mid=1&smid=1"
+        },
+        "5805": {
+            "ID": 5805,
+            "abbreviation": "WBB Trust",
+            "name": "Work for a Better Bangladesh",
+            "website_url": "http://www.wbbtrust.org/"
+        },
+        "5810": {
+            "ID": 5810,
+            "abbreviation": "UBINIG",
+            "name": "Policy Research for Development Alternatives",
+            "website_url": "http://ubinig.org/"
+        },
+        "5811": {
+            "ID": 5811,
+            "abbreviation": "",
+            "name": "Nayakrishi Andolon",
+            "website_url": "http://www.ubinig.org/index.php/network/userNayakrishi/english"
+        },
+        "5812": {
+            "ID": 5812,
+            "abbreviation": "CEPAGRO",
+            "name": "Study and Promotion Center of Group Agriculture",
+            "website_url": "http://cepagroagroecologia.wordpress.com/"
+        },
+        "5815": {
+            "ID": 5815,
+            "abbreviation": "ILO",
+            "name": "International Labour Organisation",
+            "website_url": "http://www.ilo.org"
+        },
+        "5826": {
+            "ID": 5826,
+            "abbreviation": "",
+            "name": "Metz Herbs",
+            "website_url": "http://metzkraeuter.de/"
+        },
+        "5998": {
+            "ID": 5998,
+            "abbreviation": "",
+            "name": "Argentina's Ministry of Agriculture, Livestock and Fisheries",
+            "website_url": "http://www.minagri.gob.ar/site/"
+        },
+        "5999": {
+            "ID": 5999,
+            "abbreviation": "USLA FSPH",
+            "name": "UCLA Fielding School of Public Health",
+            "website_url": "http://ph.ucla.edu/"
+        },
+        "6000": {
+            "ID": 6000,
+            "abbreviation": "",
+            "name": "Yuxi Bureau of Agriculture",
+            "website_url": ""
+        },
+        "6001": {
+            "ID": 6001,
+            "abbreviation": "MACT India",
+            "name": "Mary Anne Charity Trust",
+            "website_url": "http://www.mactindia.org/"
+        },
+        "6002": {
+            "ID": 6002,
+            "abbreviation": "",
+            "name": "Tamil Nadu People's Forum for Tobacco Control",
+            "website_url": ""
+        },
+        "6005": {
+            "ID": 6005,
+            "abbreviation": "ADRA Malawi",
+            "name": "The Adventist Development and Relief Agency Malawi",
+            "website_url": "www.adramalawi.blogspot.de"
+        },
+        "6006": {
+            "ID": 6006,
+            "abbreviation": "",
+            "name": "Kang'oma Groundnut Association",
+            "website_url": ""
+        },
+        "6007": {
+            "ID": 6007,
+            "abbreviation": "LKTN",
+            "name": "National Kenaf and Tobacco Board",
+            "website_url": "http://www.lktn.gov.my/en/"
+        },
+        "6008": {
+            "ID": 6008,
+            "abbreviation": "SAGARPA",
+            "name": "Mexican Ministry of Agriculture",
+            "website_url": "http://www.sagarpa.gob.mx/"
+        },
+        "6009": {
+            "ID": 6009,
+            "abbreviation": "ATCC",
+            "name": "Tunisian Association for the fight against Cancer",
+            "website_url": "http://www.atcc.org.tn/"
+        },
+        "6010": {
+            "ID": 6010,
+            "abbreviation": "TAPDK",
+            "name": "Tobacco and Alcohol Market Regulatory Authority",
+            "website_url": "http://www.tapdk.gov.tr "
+        },
+        "6012": {
+            "ID": 6012,
+            "abbreviation": "CTCA",
+            "name": "Center for Tobacco Control in Africa",
+            "website_url": "http://ctc-africa.org/"
+        },
+        "6013": {
+            "ID": 6013,
+            "abbreviation": "",
+            "name": "Ugandan Ministry of Agriculture, Animal Industry and Fisheries",
+            "website_url": "http://www.gov.ug/ministry/ministry-agriculture-animal-industry-and-fisheries"
+        },
+        "6015": {
+            "ID": 6015,
+            "abbreviation": "",
+            "name": "Sabra Dipping co.",
+            "website_url": "http://sabra.com/"
+        },
+        "6016": {
+            "ID": 6016,
+            "abbreviation": "MOFA",
+            "name": "Makoni Organic Farmers Association",
+            "website_url": ""
+        }
     },
-    "5816": {
-      "ID": "5816",
-      "name": "Advisory Service on Alternative Livelihoods",
-      "description": "Between 2009 and 2011, the non-profit organisation <a href=\"http://www.ubinig.org/index.php/home/getArticlesUnderCat/9/english\">UBINIG</a> and the agricultural movement Nayakrishi Andolon supported and advised tobacco farmers in Kushtia, Cox's Bazar and Bandarban on suitable alternative crops to tobacco. Nayakrishi Andolon provided training on ecological farming practices, based on their principles. These include: mixed cropping, no chemical or pesticide use, and own seed production.  Tobacco farmers were thus able to switch to growing potato, maize, lentil and coriander as a mixed crop. A study conducted by UBINIG showed that these farmers had more than a fourtyfold return on their initial investment as well as far less input costs compared to tobacco farmers.",
-      "website_url": "http://www.ubinig.org/index.php/home/getArticlesUnderCat/9/english",
-      "contact_email": "info@ubinig.org",
-      "organisations": [
-        5810,
-        5811
-      ],
-      "countries": [
-        5808
-      ],
-      "locations": [
-        5817
-      ]
-    },
-    "5823": {
-      "ID": "5823",
-      "name": "Lobbying for Alternative Livelihoods for Bidi Workers",
-      "description": "<!--:de-->BATA issued a press release in 2014, calling on the government to use tobacco taxes to help bidi workers find <a href=\"http://www.theindependentbd.com/index.php?option=com_content&amp;view=article&amp;id=220238:alternative-jobs-for-tobacco-workers-demanded&amp;catid=135:metropolitan-dhaka&amp;Itemid=174\">alternative work</a>.\r\n\r\n<!--:--><!--:en-->&nbsp;\r\n\r\n<!--:-->",
-      "website_url": "",
-      "contact_email": "http://www.bata.net.bd/contactus.php?mid=9",
-      "organisations": [
-        5804
-      ],
-      "countries": [
-        5808
-      ],
-      "locations": [
-        5818
-      ]
-    },
-    "5824": {
-      "ID": "5824",
-      "name": "Oregano Project",
-      "description": "The International Labour Organisation trained 110 tobacco farmers on how to <a href=\"http://www.ilo.org/wcmsp5/groups/public/---dgreports/---dcomm/documents/publication/wcms_182788.pdf#33\">grow oregano</a> as an alternative crop,  also supplying them with seeds and irrigation materials. In comparison to tobacco, oregano has low input costs, requires less water and less work. Annual returns can be about 25 % higher than tobacco. The ILO programme also supports olive farming, beekeeping, livestock and fish farming in Lebanon thanks to funding from the Lebanon Recovery Fund (LRF). Alternatives to tobacco growing are particularly important in a country where 60% of the population depend on the tobacco production sector for their livelihood.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        5815
-      ],
-      "countries": [
-        5809
-      ],
-      "locations": [
-        5821
-      ]
-    },
-    "5827": {
-      "ID": "5827",
-      "name": "Herbs as Alternative",
-      "description": "<!--:de-->The German state of Rhineland Palatinate financed a herb drying facility to help tobacco farmers diversify and grow herbs such as parsley, dill, coriander and estragon. Many tobacco farmers from the Herxheim-Hayna area joined the association Erzeugergemeinschaft Pfalzkräuter. The herbs harvested by the group's members are processed by <a href=\"http://metzkraeuter.de/index.php/wir-ueber-uns.html\">Metz Kräuter</a>, where the herbs are dried and packed for sale. In 2010, Metz Kräuter had grown to become the fifth largest dried herb producer in Germany.\r\n\r\n<!--:--><!--:en-->&nbsp;\r\n\r\n<!--:-->",
-      "website_url": "",
-      "contact_email": "info@metzkraeuter.de",
-      "organisations": [
-        5826
-      ],
-      "countries": [
-        5783
-      ],
-      "locations": [
-        5825
-      ]
-    },
-    "5830": {
-      "ID": "5830",
-      "name": "Technical Support and Training for Smallholder Farmers",
-      "description": "<!--:de-->Based in the state of Santa Catarina, the NGO provides technical support and training for smallholder farmers wishing to switch to organic food production.  With the organisation's support, tobacco farmers have started growing a variety of organic products, such as beans, potatoes, carrot, onion, grapes and dairy products. They are encouraged to create added value for their products  by producing for example grape juice, vegetable preserves or organic jams. CEPAGRO helps connect farmers with cooperatives and facilitate access to guaranteed market spaces by integrating them into the <a href=\"http://www.ecovida.org.br/a-rede/\">Ecovida Agroecology Network</a> (Rede Ecovida de Agroecologia), a certification and commercialisation network for organic products.\r\n\r\nCEPAGRO is involved in dialogue with various public bodies and civil societies, thus aiming to improve and shape public policies in the interest of farming families. It is involved in the State Committee for Alternatives to Tobacco Growing (Comitê Estadual de Alternativas para a Cultura do Tabaco).\r\n\r\n<!--:--><!--:en-->&nbsp;\r\n\r\n<!--:-->",
-      "website_url": "",
-      "contact_email": "cepagro@cepagro.org.br",
-      "organisations": [
-        5812
-      ],
-      "countries": [
-        5791
-      ],
-      "locations": [
-        5820
-      ]
-    },
-    "5984": {
-      "ID": "5984",
-      "name": "Reconversion Programme for Tobacco Growing Areas",
-      "description": "The Reconversion Programme for Tobacco Growing Areas(Programa de Reconversión de Áreas Tabacaleras) is a state-led diversification programme funded by tobacco tax revenues. The primary aim of the programme is to develop and improve the tobacco production sector in Argentina. At the same time the programme helps farmers diversify to a variety of activities, such as beekeeping, citrus farming, yerba mate growing and livestock farming. Support is provided in the form of credits and technical assistance. Other aims of the programme include tackling child labour, reforestation and reducing the use of pesticide.",
-      "website_url": "http://64.76.123.202/site/agricultura/tabaco/?edit_accion=noticia&id_info=120524201808",
-      "contact_email": "",
-      "organisations": [
-        5998
-      ],
-      "countries": [],
-      "locations": [
-        6061
-      ]
-    },
-    "6017": {
-      "ID": "6017",
-      "name": "China after Tobacco",
-      "description": "In 2008, the Yuxi Bureau of Agriculture and the UCLA Fielding School of Public Health started a joint tobacco crop substitution project with 458 Farming Families participating. Suitable crops were identified for each area, depending on soil quality, including cruciferous vegetables, mushrooms, grapes, gherkins, cauliflower, broccoli, peas and arrowroot. The farmers organised themselves into cooperatives, through which they received training on important skills such as accounting, conducting market research, storing and selling their products. The cooperatives further assisted farmers by providing low-cost access to seeds and agricultural inputs, whilst local agricultural specialists delivered training and technical support in the fields. In 2010 the farmers who had switched had an annual income 21% to 110% higher per acre in comparison to those who still planted tobacco. Since then, the Yuxi Bureau of Agriculture has received many requests from tobacco farmers to assist them in switching.",
-      "website_url": "http://ph.ucla.edu/about-fsph/impact-stories/crop-substitution-china-curbing-tobacco-production",
-      "contact_email": "vcl@ucla.edu",
-      "organisations": [
-        6000,
-        5999
-      ],
-      "countries": [],
-      "locations": [
-        6031
-      ]
-    },
-    "6018": {
-      "ID": "6018",
-      "name": "Geranium and Moringa Project",
-      "description": "On World No Tobacco Day 2014, the NGO Biofarm and the Centre de formation Chrétienne Biosystem (CFCB) launched a <a href=\"http://www.lexpressmada.com/blog/actualites/tentative-de-reconversion-des-cultivateurs-du-tabac-11909\">project to help tobacco growers</a> in Madagascar grow alternatives such as organic geraniums and moringa. Organically grown geranium can fetch a price up to 15 times higher than tobacco. CFCB is planning to make essential oils from the substitute crops, thus providing a guaranteed market for the former tobacco farmers.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [],
-      "countries": [
-        5989
-      ],
-      "locations": [
-        6034
-      ]
-    },
-    "6019": {
-      "ID": "6019",
-      "name": "Groundnuts and Soya Workshop",
-      "description": "In 2012, a <a href=\"http://www.adramalawi.blogspot.de/2012/01/post-titlegroundnuts-soybeans-can.html\">workshop organised</a> by ADRA Malawi motivated farmers in Lilongwe District to form an association to help them grow and market groundnuts and soya as alternative crops to tobacco. ADRA Malawi provided capacity-building training and contacts to agribusiness companies. Representatives from the Kang'oma Groundnut Association organised the inputs and material thanks to the initial help from ADRA Malawi.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6005,
-        6006
-      ],
-      "countries": [
-        5990
-      ],
-      "locations": [
-        6044
-      ]
-    },
-    "6020": {
-      "ID": "6020",
-      "name": "Sensitization Workshop on Alternative Crops",
-      "description": "In 2012, the Mary Anne Charity Trust and the Tamil Nadu People's Forum for Tobacco Control ran a sensitization workshop on alternative crops for tobacco farmers. 75 tobacco farmers participated in the workshop. At the end of the workshop, farmers expressed their willingness to switch to other crops, and called on government to provide support for alternative crops and livelihoods to tobacco.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6001,
-        6002
-      ],
-      "countries": [
-        5987
-      ],
-      "locations": [
-        6033
-      ]
-    },
-    "6021": {
-      "ID": "6021",
-      "name": "National Tobacco Control Programme",
-      "description": "India's <a href=\"http://mohfw.nic.in/WriteReadData/l892s/2945310979Operational%20Guidelines.pdf#25\">National Tobacco Control Programme</a> (NTCP), launched in 2007, supports research and training on alternative crops and livelihoods. It primarily aims to reduce production of non-FCV tobacco (i.e. bidi/hukka/chewing tobacco). A three year pilot study conducted through the Central Tobacco Research Institute (CTRI) identified six potential alternative crops: potato, maize, sunflower, moringa, mustard and groundnut . The programme is currently aiming to raise awareness amongst farmers about the availability of alternative crops.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [],
-      "countries": [
-        5987
-      ],
-      "locations": [
-        6032
-      ]
-    },
-    "6022": {
-      "ID": "6022",
-      "name": "Tobacco Industry Restructuring Plan",
-      "description": "Launched in 2005, the <a href=\"http://www3.pmo.gov.my/WebNotesApp/tpmmain.nsf/f0d8126d117745db4825674f00069cba/17490a19d9bbef904825705700196e02?OpenDocument \">Tobacco Industry Restructuring Plan</a> (RPSIT) aims to meet Malaysia's commitment to the FCTC and to anticipate the negative impact expected from the ASEAN Free Trade Agreement. It focuses on kenaf (hibiscus cannabinus) as an alternative for tobacco growers. The government aims to make the crop the third most important contributor to the national economy after rubber and palm oil by 2020.More than 15 million euros (65 million Malaysian ringgit) are being invested in research and development of the industry as a whole, from crop to final product. The plant can be used to make paper, building material, bio-plastics or even animal fodder. Tobacco growers willing to switch to kenaf have been provided with cash incentives of 554 euros (2,300 Malaysian ringgit) per hectare as well as seeds, fertilisers, pesticides and training. The National Kenaf and Tobacco Board is responsible for promoting the new crop among tobacco growers.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6007
-      ],
-      "countries": [
-        5991
-      ],
-      "locations": [
-        6035
-      ]
-    },
-    "6023": {
-      "ID": "6023",
-      "name": "Reconversion Plan for Tobacco Growing States",
-      "description": "The Ministry of Agriculture (SAGARPA) has conducted research, in cooperation with the Ministry of Health,  into viable substitution strategies for tobacco farmers in the tobacco growing states of Chiapas, Nayarit and Veracruz. Tomato, green chilli pepper, papaya, corn, sorghum and rice have been identified as alternative crops. In 2009, SAGARPA helped finance the conversion of 1,900 ha of tobacco-cultivated land, and since 2010, a special fund (350 million Mexican pesos) in the SAGARPA household budget has been dedicated to this purpose. The state of Nayarit is using the funds to help tobacco and sugar cane growers switch to yellow corn. 3 million farming families are to benefit from the programme.",
-      "website_url": "http://nayaritenlinea.mx/2014/01/24/cultivos-de-tabaco-y-cana-de-azucar-cambiaran-por-maiz-amarillo/",
-      "contact_email": "",
-      "organisations": [
-        6008
-      ],
-      "countries": [
-        5992
-      ],
-      "locations": [
-        6037
-      ]
-    },
-    "6024": {
-      "ID": "6024",
-      "name": "Diversification Project for Tobacco Farmers",
-      "description": "Between 2006 and 2013, the Tunisian Association Against Cancer helped 36 tobacco farmers <a href=\"http://www.ciheam.org/images/CIHEAM/PDFs/Publications/LV/wl24.pdf\">diversify and grow food crops</a> instead of tobacco. The project financed the construction of wells to improve access to water and fences to help farmers protect their food crops against wild boars. Farmers chosen for the project had to have some level of capital in order to contribute to some of the project costs. Microcredit was provided for the purchase of agricultural inputs for the new crops. Thus, farmers were able to grow olives and oat as cash crops, whilst increasing acreage of subsistance crops such as potato, onion, tomato, chili and chickpeas. Farmers were also able to consolidate other activities such as livestock farming (e.g. poultry, sheep, cattle).",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6009
-      ],
-      "countries": [
-        5993
-      ],
-      "locations": [
-        6060
-      ]
-    },
-    "6025": {
-      "ID": "6025",
-      "name": "Olives, Thyme and Cattle",
-      "description": "Since the removal of tobacco leaf subsidies in 2002, farmers in the Aegean, Black Sea and Marmara regions have shifted to other economic activities. Many farmers used their own initiative and resources to switch to vine, almond, cherries, olive or dairy farming. Other farmers have gone into tourism or migrated to major cities. In the Aegean Region, the provincial agriculture directorates provided support for farmers to start activities such as olive and thyme cultivation as well as cattle and dairy farming.\r\n\r\nThe Tobacco and Alcohol Market Regulatory Authority (TAPDK) and The Ministry of Agriculture and Rural Affairs are the authorities responsible for monitoring and researching <a href=\"http://www.euro.who.int/__data/assets/pdf_file/0004/98446/E93038.pdf#46\">alternative crops to tobacco in Turkey</a>.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6010
-      ],
-      "countries": [
-        5994
-      ],
-      "locations": [
-        6039
-      ]
-    },
-    "6026": {
-      "ID": "6026",
-      "name": "Rice and Livestock",
-      "description": "In South Western Uganda some farmers were able to switch to rice and livestock keeping without external support. Rice was found to be two times more profitable than tobacco. A<a href=\"http://ctc-africa.org/fr/images/docments/reports/ALTERNATIVE_LIVELIHOODS.pdf\"> study</a> conducted by the Center for Tobacco Control in Africa shows that the majority of farmers in tobacco growing districts would like to switch to alternative crops, as long as farm inputs, training and a guaranteed market are provided.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6012
-      ],
-      "countries": [
-        5995
-      ],
-      "locations": [
-        6040
-      ]
-    },
-    "6027": {
-      "ID": "6027",
-      "name": "Improving food security",
-      "description": "The government of Uganda has been looking into strategies that can help tobacco farmers <a href=\"http://ctc-africa.org/fr/images/docments/reports/ALTERNATIVE_LIVELIHOODS.pdf\">shift to alternatives</a>. As part of its efforts to improve food security across the country, the Ministry of Agriculture has mapped out crops and activities suited to 10 main agricultural regions in Uganda. Products include maize, coffee, beans, tea, cassava, rice, poultry, fish, dairy and fruit. These products are to benefit from state support in the given areas. The Uganda Parliamentary Forum on Non-Communicable Diseases is currently looking into streamlining strategies for alternatives within the Agricultural Zoning Principle, thus using existing policy framework to help farmers transition.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6013
-      ],
-      "countries": [
-        5995
-      ],
-      "locations": [
-        6041
-      ]
-    },
-    "6028": {
-      "ID": "6028",
-      "name": "Chickpea boom ",
-      "description": "In 2013, tobacco farmers in the state of Virginia started diversifying to chickpeas. The move was instigated by the world's largest hummus manufacturer, Sabra Dipping co. Hummus, a dip made from chickpeas, has been enjoying <a href=\"http://online.wsj.com/news/articles/SB10001424127887323798104578453174022015956\">increasing popularity</a> in the US and Sabra has been looking to increase its supply in chickpeas. In contrast to tobacco, chickpeas are less labour intensive and do not require fertiliser, as they fix their own nitrogen into the soil. Virginia state officials are keen to encourage the new crop to replace tobacco whose popularity has been declining since 1990. Virginia State University has been encharged with overseeing research and on-farm trials to find the best suited chickpea varieties.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6015
-      ],
-      "countries": [
-        5996
-      ],
-      "locations": [
-        6042
-      ]
-    },
-    "6029": {
-      "ID": "6029",
-      "name": "Diversified organic farming",
-      "description": "Created in 2007, the Makoni Organic Farmers Association (MOFA) now counts 450 farmers who have <a href=\"https://sgp.undp.org/index.php?option=com_content&amp;view=article&amp;id=282&amp;catid=36&amp;Itemid=186#.VCMZ2RYhRcr\">switched from tobacco to organic farming</a>. Thanks to a small grant from the Global Environment Facility (GEF), farmers received training on various aspects of organic farming. The alternatives chosen by farmers include horticulture, nursery management, agro-forestry, mushroom production, aquaculture and beekeeping. Since the programme started, farmers have seen their incomes and food security  significantly improve, convincing other farmers in the area to start organic farming too. MOFA products have been certified organic since 2012, thus allowing farmers to access wider local and international markets. The association was awarded with the 2014 Equator Prize by the UNDP.",
-      "website_url": "",
-      "contact_email": "",
-      "organisations": [
-        6016
-      ],
-      "countries": [
-        5997
-      ],
-      "locations": [
-        6043
-      ]
+    "projects": {
+        "5784": {
+            "ID": "5784",
+            "contact_email": "tobaccotobamboo@gmail.com",
+            "countries": [
+                5786
+            ],
+            "description": "",
+            "locations": [
+                5788
+            ],
+            "name": "Tobacco to Bamboo",
+            "organisations": [],
+            "website_url": "www.tobaccotobamboo.org"
+        },
+        "5790": {
+            "ID": "5790",
+            "contact_email": "",
+            "countries": [
+                5791
+            ],
+            "description": "",
+            "locations": [
+                5819
+            ],
+            "name": "National Programme for Diversification in Tobacco Growing Areas",
+            "organisations": [
+                5792
+            ],
+            "website_url": "http://comunidades.mda.gov.br/portal/saf/programas/projetosespeciais/2308129"
+        },
+        "5806": {
+            "ID": "5806",
+            "contact_email": "",
+            "countries": [
+                5808
+            ],
+            "description": "",
+            "locations": [
+                5818
+            ],
+            "name": "WBB Trust Seminar on Alternative Livelihoods",
+            "organisations": [
+                5805
+            ],
+            "website_url": ""
+        },
+        "5816": {
+            "ID": "5816",
+            "contact_email": "info@ubinig.org",
+            "countries": [
+                5808
+            ],
+            "description": "",
+            "locations": [
+                5817
+            ],
+            "name": "Advisory Service on Alternative Livelihoods",
+            "organisations": [
+                5810,
+                5811
+            ],
+            "website_url": "http://www.ubinig.org/index.php/home/getArticlesUnderCat/9/english"
+        },
+        "5823": {
+            "ID": "5823",
+            "contact_email": "http://www.bata.net.bd/contactus.php?mid=9",
+            "countries": [
+                5808
+            ],
+            "description": "",
+            "locations": [
+                5818
+            ],
+            "name": "Lobbying for Alternative Livelihoods for Bidi Workers",
+            "organisations": [
+                5804
+            ],
+            "website_url": ""
+        },
+        "5824": {
+            "ID": "5824",
+            "contact_email": "",
+            "countries": [
+                5809
+            ],
+            "description": "",
+            "locations": [
+                5821
+            ],
+            "name": "Oregano Project",
+            "organisations": [
+                5815
+            ],
+            "website_url": ""
+        },
+        "5827": {
+            "ID": "5827",
+            "contact_email": "info@metzkraeuter.de",
+            "countries": [
+                5783
+            ],
+            "description": "",
+            "locations": [
+                5825
+            ],
+            "name": "Herbs as Alternative",
+            "organisations": [
+                5826
+            ],
+            "website_url": ""
+        },
+        "5830": {
+            "ID": "5830",
+            "contact_email": "cepagro@cepagro.org.br",
+            "countries": [
+                5791
+            ],
+            "description": "",
+            "locations": [
+                5820
+            ],
+            "name": "Technical Support and Training for Smallholder Farmers",
+            "organisations": [
+                5812
+            ],
+            "website_url": ""
+        },
+        "5984": {
+            "ID": "5984",
+            "contact_email": "",
+            "countries": [],
+            "description": "",
+            "locations": [],
+            "name": "Reconversion Programme for Tobacco Growing Areas",
+            "organisations": [
+                5998
+            ],
+            "website_url": "http://64.76.123.202/site/agricultura/tabaco/?edit_accion=noticia&id_info=120524201808"
+        },
+        "6017": {
+            "ID": "6017",
+            "contact_email": "vcl@ucla.edu",
+            "countries": [],
+            "description": "",
+            "locations": [
+                6031
+            ],
+            "name": "China after Tobacco",
+            "organisations": [
+                6000,
+                5999
+            ],
+            "website_url": "http://ph.ucla.edu/about-fsph/impact-stories/crop-substitution-china-curbing-tobacco-production"
+        },
+        "6018": {
+            "ID": "6018",
+            "contact_email": "",
+            "countries": [
+                5989
+            ],
+            "description": "",
+            "locations": [
+                6034
+            ],
+            "name": "Geranium and Moringa Project",
+            "organisations": [],
+            "website_url": ""
+        },
+        "6019": {
+            "ID": "6019",
+            "contact_email": "",
+            "countries": [
+                5990
+            ],
+            "description": "",
+            "locations": [
+                6044
+            ],
+            "name": "Groundnuts and Soya Workshop",
+            "organisations": [
+                6005,
+                6006
+            ],
+            "website_url": ""
+        },
+        "6020": {
+            "ID": "6020",
+            "contact_email": "",
+            "countries": [
+                5987
+            ],
+            "description": "",
+            "locations": [
+                6033
+            ],
+            "name": "Sensitization Workshop on Alternative Crops",
+            "organisations": [
+                6001,
+                6002
+            ],
+            "website_url": ""
+        },
+        "6021": {
+            "ID": "6021",
+            "contact_email": "",
+            "countries": [
+                5987
+            ],
+            "description": "",
+            "locations": [
+                6032
+            ],
+            "name": "National Tobacco Control Programme",
+            "organisations": [],
+            "website_url": ""
+        },
+        "6022": {
+            "ID": "6022",
+            "contact_email": "",
+            "countries": [
+                5991
+            ],
+            "description": "",
+            "locations": [
+                6035
+            ],
+            "name": "Tobacco Industry Restructuring Plan",
+            "organisations": [
+                6007
+            ],
+            "website_url": ""
+        },
+        "6023": {
+            "ID": "6023",
+            "contact_email": "",
+            "countries": [
+                5992
+            ],
+            "description": "",
+            "locations": [
+                6037
+            ],
+            "name": "Reconversion Plan for Tobacco Growing States",
+            "organisations": [
+                6008
+            ],
+            "website_url": "http://nayaritenlinea.mx/2014/01/24/cultivos-de-tabaco-y-cana-de-azucar-cambiaran-por-maiz-amarillo/"
+        },
+        "6024": {
+            "ID": "6024",
+            "contact_email": "",
+            "countries": [
+                5993
+            ],
+            "description": "",
+            "locations": [
+                6038
+            ],
+            "name": "Diversification Project for Tobacco Farmers",
+            "organisations": [
+                6009
+            ],
+            "website_url": ""
+        },
+        "6025": {
+            "ID": "6025",
+            "contact_email": "",
+            "countries": [
+                5994
+            ],
+            "description": "",
+            "locations": [
+                6039
+            ],
+            "name": "Olives, Thyme and Cattle",
+            "organisations": [
+                6010
+            ],
+            "website_url": ""
+        },
+        "6026": {
+            "ID": "6026",
+            "contact_email": "",
+            "countries": [
+                5995
+            ],
+            "description": "",
+            "locations": [
+                6040
+            ],
+            "name": "Rice and Livestock",
+            "organisations": [
+                6012
+            ],
+            "website_url": ""
+        },
+        "6027": {
+            "ID": "6027",
+            "contact_email": "",
+            "countries": [
+                5995
+            ],
+            "description": "",
+            "locations": [
+                6041
+            ],
+            "name": "Improving food security",
+            "organisations": [
+                6013
+            ],
+            "website_url": ""
+        },
+        "6028": {
+            "ID": "6028",
+            "contact_email": "",
+            "countries": [
+                5996
+            ],
+            "description": "",
+            "locations": [
+                6042
+            ],
+            "name": "Chickpea boom ",
+            "organisations": [
+                6015
+            ],
+            "website_url": ""
+        },
+        "6029": {
+            "ID": "6029",
+            "contact_email": "",
+            "countries": [
+                5997
+            ],
+            "description": "",
+            "locations": [
+                6043
+            ],
+            "name": "Diversified organic farming",
+            "organisations": [
+                6016
+            ],
+            "website_url": ""
+        }
     }
-  },
-  "countries": {
-    "5786": {
-      "ID": 5786,
-      "name": "Kenya",
-      "iso_code": "KE",
-      "gini_coefficient": "47.7",
-      "global_hunger_index": "18",
-      "land_devoted_to_tobacco": "144",
-      "cigarette_consumption_per_capita": "21",
-      "sources": "",
-      "region": "Africa"
-    },
-    "5791": {
-      "ID": 5791,
-      "name": "Brazil",
-      "iso_code": "BR",
-      "gini_coefficient": "54.7",
-      "global_hunger_index": "< 5",
-      "land_devoted_to_tobacco": "144",
-      "cigarette_consumption_per_capita": "20,642",
-      "sources": "",
-      "region": "Latin America"
-    },
-    "5808": {
-      "ID": 5808,
-      "name": "Bangladesh",
-      "iso_code": "BD",
-      "gini_coefficient": "32.1",
-      "global_hunger_index": "19.4",
-      "land_devoted_to_tobacco": "29,869",
-      "cigarette_consumption_per_capita": "154",
-      "sources": "",
-      "region": "Asia"
-    },
-    "5809": {
-      "ID": 5809,
-      "name": "Lebanon",
-      "iso_code": "LB",
-      "gini_coefficient": "n/a",
-      "global_hunger_index": "< 5",
-      "land_devoted_to_tobacco": "8,217",
-      "cigarette_consumption_per_capita": "2,138",
-      "sources": "",
-      "region": "North Africa/Middle East"
-    },
-    "5783": {
-      "ID": 5783,
-      "name": "Germany",
-      "iso_code": "DE",
-      "gini_coefficient": "31.0",
-      "global_hunger_index": "N/A",
-      "land_devoted_to_tobacco": "1",
-      "cigarette_consumption_per_capita": "3",
-      "sources": "",
-      "region": "Europe/USA"
-    },
-    "5989": {
-      "ID": 5989,
-      "name": "Madagascar",
-      "iso_code": "MG",
-      "gini_coefficient": "44.1",
-      "global_hunger_index": "25.2",
-      "land_devoted_to_tobacco": "2720",
-      "cigarette_consumption_per_capita": "260",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Africa"
-    },
-    "5990": {
-      "ID": 5990,
-      "name": "Malawi",
-      "iso_code": "MW",
-      "gini_coefficient": "43.9",
-      "global_hunger_index": "15.1",
-      "land_devoted_to_tobacco": "183,052",
-      "cigarette_consumption_per_capita": "48",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Africa"
-    },
-    "5987": {
-      "ID": 5987,
-      "name": "India",
-      "iso_code": "IN",
-      "gini_coefficient": "33.9",
-      "global_hunger_index": "29.3",
-      "land_devoted_to_tobacco": "390000",
-      "cigarette_consumption_per_capita": "96",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Asia"
-    },
-    "5991": {
-      "ID": 5991,
-      "name": "Malaysia",
-      "iso_code": "MY",
-      "gini_coefficient": "46.2",
-      "global_hunger_index": "5.5",
-      "land_devoted_to_tobacco": "14,406",
-      "cigarette_consumption_per_capita": "539",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Asia"
-    },
-    "5992": {
-      "ID": 5992,
-      "name": "Mexico",
-      "iso_code": "MX",
-      "gini_coefficient": "47.2",
-      "global_hunger_index": "<5",
-      "land_devoted_to_tobacco": "4,312",
-      "cigarette_consumption_per_capita": "371",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Latin America"
-    },
-    "5993": {
-      "ID": 5993,
-      "name": "Tunisia",
-      "iso_code": "TN",
-      "gini_coefficient": "36.1",
-      "global_hunger_index": "<5",
-      "land_devoted_to_tobacco": "1500",
-      "cigarette_consumption_per_capita": "1,628",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "North Africa/Middle East"
-    },
-    "5994": {
-      "ID": 5994,
-      "name": "Turkey",
-      "iso_code": "TR",
-      "gini_coefficient": "40",
-      "global_hunger_index": "<5",
-      "land_devoted_to_tobacco": "139,431",
-      "cigarette_consumption_per_capita": "1,399",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Europe/USA"
-    },
-    "5995": {
-      "ID": 5995,
-      "name": "Uganda",
-      "iso_code": "UG",
-      "gini_coefficient": "44.3",
-      "global_hunger_index": "19.2",
-      "land_devoted_to_tobacco": "14000",
-      "cigarette_consumption_per_capita": "24",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Africa"
-    },
-    "5996": {
-      "ID": 5996,
-      "name": "USA",
-      "iso_code": "US",
-      "gini_coefficient": "45",
-      "global_hunger_index": "n/a",
-      "land_devoted_to_tobacco": "143320",
-      "cigarette_consumption_per_capita": "1,028",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Europe/USA"
-    },
-    "5997": {
-      "ID": 5997,
-      "name": "Zimbabwe",
-      "iso_code": "ZW",
-      "gini_coefficient": "50.1",
-      "global_hunger_index": "16.5",
-      "land_devoted_to_tobacco": "79917",
-      "cigarette_consumption_per_capita": "189",
-      "sources": "Worldbank GHI, www.tobaccoatlas.org",
-      "region": "Africa"
-    }
-  },
-  "locations": {
-    "5788": {
-      "ID": 5788,
-      "name": "Kitui/Kenya",
-      "latitude": "-1.3750813",
-      "longitude": "37.99521440000001"
-    },
-    "5819": {
-      "ID": 5819,
-      "name": "Dom Feliciano",
-      "latitude": "-30.7010544",
-      "longitude": "-52.10687949999999"
-    },
-    "5818": {
-      "ID": 5818,
-      "name": "Dhaka",
-      "latitude": "23.810332",
-      "longitude": "90.41251809999994"
-    },
-    "5817": {
-      "ID": 5817,
-      "name": "Kushtia District",
-      "latitude": "23.9",
-      "longitude": "89.13999999999999"
-    },
-    "5821": {
-      "ID": 5821,
-      "name": "Beirut",
-      "latitude": "33.8886289",
-      "longitude": "35.49547940000002"
-    },
-    "5825": {
-      "ID": 5825,
-      "name": "Herxheim-Hayna",
-      "latitude": "49.122961",
-      "longitude": "8.204054000000042"
-    },
-    "5820": {
-      "ID": 5820,
-      "name": "Florianopolis",
-      "latitude": "-27.5949884",
-      "longitude": "-48.54817430000003"
-    },
-    "6061": {
-      "ID": 6061,
-      "name": "Buenos Aires",
-      "latitude": "-34.6037232",
-      "longitude": "-58.38159310000003"
-    },
-    "6031": {
-      "ID": 6031,
-      "name": "Kunming",
-      "latitude": "24.880095",
-      "longitude": "102.83289200000002"
-    },
-    "6034": {
-      "ID": 6034,
-      "name": "Antananarivo",
-      "latitude": "-18.933333",
-      "longitude": "47.516666999999984"
-    },
-    "6044": {
-      "ID": 6044,
-      "name": "Lilongwe",
-      "latitude": "-13.983333",
-      "longitude": "33.78333299999997"
-    },
-    "6033": {
-      "ID": 6033,
-      "name": "Chennai",
-      "latitude": "13.0509972",
-      "longitude": "80.22797630000002"
-    },
-    "6032": {
-      "ID": 6032,
-      "name": "Rajahmundry",
-      "latitude": "17.0236378",
-      "longitude": "81.78417030000003"
-    },
-    "6035": {
-      "ID": 6035,
-      "name": "Kota Bharu",
-      "latitude": "6.093201",
-      "longitude": "102.27330499999994"
-    },
-    "6037": {
-      "ID": 6037,
-      "name": "Mexico City",
-      "latitude": "19.3685426",
-      "longitude": "-99.16360510000004"
-    },
-    "6060": {
-      "ID": 6060,
-      "name": "Tabarca",
-      "latitude": "36.954444",
-      "longitude": "8.75805600000001"
-    },
-    "6039": {
-      "ID": 6039,
-      "name": "Ankara",
-      "latitude": "39.9160554",
-      "longitude": "32.80178209999997"
-    },
-    "6040": {
-      "ID": 6040,
-      "name": "South Western Uganda",
-      "latitude": "-0.7899999999999999",
-      "longitude": "29.924999999999955"
-    },
-    "6041": {
-      "ID": 6041,
-      "name": "Kampala",
-      "latitude": "0.3217848",
-      "longitude": "32.58101080000006"
-    },
-    "6042": {
-      "ID": 6042,
-      "name": "Petersburg",
-      "latitude": "37.2354011",
-      "longitude": "-77.42169949999999"
-    },
-    "6043": {
-      "ID": 6043,
-      "name": "Rusape",
-      "latitude": "-18.536667",
-      "longitude": "32.12472200000002"
-    }
-  },
-  "organisations": {
-    "5792": {
-      "ID": 5792,
-      "name": "Brazilian Ministry of Agrarian Development",
-      "abbreviation": "MDA",
-      "website_url": "www.mda.gov.br"
-    },
-    "5805": {
-      "ID": 5805,
-      "name": "Work for a Better Bangladesh",
-      "abbreviation": "WBB Trust",
-      "website_url": "http://www.wbbtrust.org/"
-    },
-    "5810": {
-      "ID": 5810,
-      "name": "Policy Research for Development Alternatives",
-      "abbreviation": "UBINIG",
-      "website_url": "http://ubinig.org/"
-    },
-    "5811": {
-      "ID": 5811,
-      "name": "Nayakrishi Andolon",
-      "abbreviation": "",
-      "website_url": "http://www.ubinig.org/index.php/network/userNayakrishi/english"
-    },
-    "5804": {
-      "ID": 5804,
-      "name": "Bangladesh Anti Tobacco Alliance",
-      "abbreviation": "BATA",
-      "website_url": "http://www.bata.net.bd/information.php?mid=1&smid=1"
-    },
-    "5815": {
-      "ID": 5815,
-      "name": "International Labour Organisation",
-      "abbreviation": "ILO",
-      "website_url": "http://www.ilo.org"
-    },
-    "5826": {
-      "ID": 5826,
-      "name": "Metz Herbs",
-      "abbreviation": "",
-      "website_url": "http://metzkraeuter.de/"
-    },
-    "5812": {
-      "ID": 5812,
-      "name": "Study and Promotion Center of Group Agriculture",
-      "abbreviation": "CEPAGRO",
-      "website_url": "http://cepagroagroecologia.wordpress.com/"
-    },
-    "5998": {
-      "ID": 5998,
-      "name": "Argentina's Ministry of Agriculture, Livestock and Fisheries",
-      "abbreviation": "",
-      "website_url": "http://www.minagri.gob.ar/site/"
-    },
-    "6000": {
-      "ID": 6000,
-      "name": "Yuxi Bureau of Agriculture",
-      "abbreviation": "",
-      "website_url": ""
-    },
-    "5999": {
-      "ID": 5999,
-      "name": "UCLA Fielding School of Public Health",
-      "abbreviation": "USLA FSPH",
-      "website_url": "http://ph.ucla.edu/"
-    },
-    "6005": {
-      "ID": 6005,
-      "name": "The Adventist Development and Relief Agency Malawi",
-      "abbreviation": "ADRA Malawi",
-      "website_url": "www.adramalawi.blogspot.de"
-    },
-    "6006": {
-      "ID": 6006,
-      "name": "Kang'oma Groundnut Association",
-      "abbreviation": "",
-      "website_url": ""
-    },
-    "6001": {
-      "ID": 6001,
-      "name": "Mary Anne Charity Trust",
-      "abbreviation": "MACT India",
-      "website_url": "http://www.mactindia.org/"
-    },
-    "6002": {
-      "ID": 6002,
-      "name": "Tamil Nadu People's Forum for Tobacco Control",
-      "abbreviation": "",
-      "website_url": ""
-    },
-    "6007": {
-      "ID": 6007,
-      "name": "National Kenaf and Tobacco Board",
-      "abbreviation": "LKTN",
-      "website_url": "http://www.lktn.gov.my/en/"
-    },
-    "6008": {
-      "ID": 6008,
-      "name": "Mexican Ministry of Agriculture",
-      "abbreviation": "SAGARPA",
-      "website_url": "http://www.sagarpa.gob.mx/"
-    },
-    "6009": {
-      "ID": 6009,
-      "name": "Tunisian Association for the fight against Cancer",
-      "abbreviation": "ATCC",
-      "website_url": "http://www.atcc.org.tn/"
-    },
-    "6010": {
-      "ID": 6010,
-      "name": "Tobacco and Alcohol Market Regulatory Authority",
-      "abbreviation": "TAPDK",
-      "website_url": "http://www.tapdk.gov.tr "
-    },
-    "6012": {
-      "ID": 6012,
-      "name": "Center for Tobacco Control in Africa",
-      "abbreviation": "CTCA",
-      "website_url": "http://ctc-africa.org/"
-    },
-    "6013": {
-      "ID": 6013,
-      "name": "Ugandan Ministry of Agriculture, Animal Industry and Fisheries",
-      "abbreviation": "",
-      "website_url": "http://www.gov.ug/ministry/ministry-agriculture-animal-industry-and-fisheries"
-    },
-    "6015": {
-      "ID": 6015,
-      "name": "Sabra Dipping co.",
-      "abbreviation": "",
-      "website_url": "http://sabra.com/"
-    },
-    "6016": {
-      "ID": 6016,
-      "name": "Makoni Organic Farmers Association",
-      "abbreviation": "MOFA",
-      "website_url": ""
-    }
-  }
 }
