@@ -39,56 +39,31 @@ function OnEachFeature(feature, layer){
       var url = feature.properties.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
       createModal(feature);
 
-/*      layer.bindPopup(renderPopup(feature, url)
-                      ); */
-/*      layer.on('mouseover', function () {
-          this.openPopup();
-                      });
-      layer.on('mouseout', function () {
-          this.closePopup();
-                      });
-*/
-
-/* http://lea.verou.me/2011/05/change-url-hash-without-page-jump/ */
+      /* http://lea.verou.me/2011/05/change-url-hash-without-page-jump/ */
       layer.on('click', function () {
-          /* this.openPopup(); */
-/*        if(history.pushState) {
-            history.pushState(null, null, '#' + url);
-        }
-        else { */
+
             location.hash = '#' + url;
-        /*}*/
+
       });
   }
 };
 
-/*
-function OnEachFeature(feature, layer){
-    if (feature.properties.name) {
-        layer.bindPopup('<b>' + feature.properties.name + '</b>' + '<br>' +
-                        feature.properties.desc + '<br>' +
-                        '<b>' + 'Website: ' + '</b>' + feature.properties.url + '<br>' +
-                        '<b>' +'Contact: ' + '</b>' + feature.properties.mail
-                        );
-        }
-    };
-*/
 
-function condense_geojson_locations ( element ) {
+
+function condenseLocations ( element ) {
   var callback = [];
   callback[0] = unfairtobacco.locations[element].longitude;
   callback[1] = unfairtobacco.locations[element].latitude;
-  //console.log(callback);
   return callback;
 }
 
-function replace_geojson_locations ( element ) {
+function replaceLocations ( element ) {
   var copy = $.extend(true, {}, element, copy);
-  copy.locations = $.map(element.locations, condense_geojson_locations);
+  copy.locations = $.map(element.locations, condenseLocations);
   return copy;
 }
 
-function render_to_geojson ( projects ) {
+function renderLayer ( projects ) {
   var geojson_projects = {};
   geojson_projects['type'] = 'FeatureCollection';
   geojson_projects['features'] = [];
@@ -101,7 +76,7 @@ function render_to_geojson ( projects ) {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": replace_geojson_locations(obj).locations
+        "coordinates": replaceLocations(obj).locations
       },
       "properties": {
         "id": projects[k].ID,
@@ -118,7 +93,9 @@ function render_to_geojson ( projects ) {
     };
     
   };
-  return geojson_projects;
+  return L.geoJson(geojson_projects, {
+      onEachFeature: OnEachFeature
+  });
 }
 
 
@@ -129,13 +106,10 @@ var projekte_geojson;
 $.getJSON( "data.json", function( data ) {
   
   unfairtobacco = data;
-  
-  projekte_geojson = render_to_geojson(unfairtobacco.projects);
-  console.log(projekte_geojson);
 
-  var Layer_project = L.geoJson(projekte_geojson, {
-      onEachFeature: OnEachFeature
-  }).addTo(map);
+  renderLayer(data.projects).addTo(map);
+
+  renderGeometry(data.countries);
 
 });
 
@@ -145,69 +119,35 @@ $.getJSON( "data.json", function( data ) {
 ///////////////// hinzufügen der Länder-GEOJSONs
 
 
-var countries_ISO = [];
-var countries_meta = [];
-
-// erstellt Array mit ISO-Daten der verwiesenen Länder
-function iso_render_to_array ( countries ) {
-
-
-    for (var k in countries) {
-      var obj = countries[k];
-      if (obj.iso_code != null) {
-        countries_ISO.push(countries[k]);
-      };
-    };
-  return countries_ISO;
-}
-
-
-function CreateCountryCallback(unfair) {
+function displayCountries(unfair) {
   return function (geojson) {
-    merge_unfair_countries(geojson, unfair);
+    enrichGeometry(geojson, unfair).addTo(map);
   };
 }
 
-function merge_unfair_countries(geojson, unfair) {
+function enrichGeometry(geojson, unfair) {
 
   var merge = $.extend(true, {}, geojson.features[0].properties, unfair)
-  console.log(merge);
 
-  var Layer_countries = L.geoJson(geojson, {
+  return L.geoJson(geojson, {
     style: style,
     //TODO onEachFeature: OnEachCountryFeature
-  }).addTo(map);
+  });
 
 };
 
 // get geoJSON anhand des ISO-Array
-function get_And_Merge_Countries_to_geoJSON ( array ) {
-    var countriesMerged = {};
-    var country = {};
+function renderGeometry ( countries ) {
 
-    for (i = 0; i <= array.length; ++i) {
-      if ( array[i] != null) {
+    for (var k in countries) {
+      var obj = countries[k];
+      if (obj.iso_code != null) {
+
         // http://stackoverflow.com/questions/6129145/pass-extra-parameter-to-jquery-getjson-success-callback-function
-        $.getJSON("countries/" + array[i].iso_code.toLowerCase() + ".geojson", CreateCountryCallback(array[i]));
+        $.getJSON("countries/" + obj.iso_code.toLowerCase() + ".geojson", displayCountries(obj));
       }
     };  
 }
-
-
-var unfairtobaccoCountries;
-var arrayCountries;
-var geoJsonCountries = {};
-
-$.getJSON( "data.json", function( data ) {
-  
-  unfairtobacco = data;
-  
-  arrayCountriesISO = iso_render_to_array(unfairtobacco.countries);
-
-  get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
-
-});
-
 
 
 /////////// Länder hervorhoben
