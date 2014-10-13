@@ -15,13 +15,61 @@ var map = L.map('map', {
 
 // POPUPS
 
-function createModal(geojson) {
+function createModal(props) {
   var modal = document.createElement("div");
-  var modal_url = geojson.properties.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
+  var modal_url = props.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
+  
+  partial_title = '<h2 class="modal-title">'+ props.name +'</h2></div>';
+
   modal.id = modal_url;
   modal.className = "modal fade";
-  modal.innerHTML = '<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><a href="#"><button>&times;</button></a><h2 class="modal-title">'+ geojson.properties.name +'</h2></div><div class="modal-body"><p>'+ geojson.properties.desc +'</p><p>'+geojson.properties.mail+'</p><p>'+geojson.properties.url+'</p></div></div></div>';
+  modal.innerHTML = '<div class="modal-dialog">'
+    + '<div class="modal-content">'
+    + '<div class="modal-header">'
+    + '<a href="#"><button>&times;</button></a>'
+    + ( ( props.url != '') ?
+      '<a href="'+ props.url+'">' + partial_title + '</a></p>' : 
+      partial_title)
+    + '<div class="modal-body">'
+    + ( ( props.orgs != []) ? renderOrganizations(props.orgs) : '')
+    + ( ( props.desc != '') ? '<p>'+ props.desc +'</p>' : '')
+    + ( ( props.mail != '') ? '<p>'+ props.mail +'</p>' : '')
+    + '</div></div></div>';
   document.body.appendChild(modal);
+}
+
+function renderOrganization ( org ) {
+  callback = ' '
+  + ( ( org.website_url != '' ) ?
+    '<a href="' + org.website_url + '">' + org.name + '</a>' :
+    org.name)
+  + ( ( org.abbreviation != '' ) ? 
+    ' (' + org.abbreviation + ')': 
+    '');
+
+  return callback;
+}
+
+function renderOrganizations ( orgs ) {
+  arr = [];
+  
+  switch (orgs.length) {
+    case 0:
+        partial = '';
+        break; 
+    case 1:
+        partial = '<em><strong>Organization:</em></strong>';
+        break; 
+    default: 
+        partial = '<em><strong>Organizations:</em></strong>';
+  }
+  
+  for (i = 0; i <= orgs.length; ++i) {
+    if ( orgs[i] != null) {
+      arr.push(renderOrganization(orgs[i]));
+    }
+  };
+  return partial + arr.join();
 }
 
 function renderPopup(feature, url) {
@@ -34,7 +82,7 @@ function renderPopup(feature, url) {
     link_start = '';
     link_end = '';
   }
-  partial_foot = '</h2><br><a href="#'+ url +'">Read more</a>';
+  partial_foot = '</h2><br>' + organizations + '<br><a href="#'+ url +'">Read more</a>';
   return partial_head + link_start + feature.properties.name + link_end + partial_foot;
 }
 
@@ -42,7 +90,7 @@ function renderPopup(feature, url) {
 function onEachProjectFeature(feature, layer){
   if (feature.properties && feature.properties.name) {
       var url = feature.properties.name.replace(/ /g,"-").replace(/[^a-zA-Z0-9 -]/g, '').toLowerCase();
-      createModal(feature);
+      createModal(feature.properties);
 
       /* http://lea.verou.me/2011/05/change-url-hash-without-page-jump/ */
       layer.on('click', function () {
@@ -215,13 +263,15 @@ info.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
+    console.log(props);
     this._div.innerHTML = '<h4>Alternatives to Tobacco</h4>' +  
         (props ?
-        '<b>' + props.name + '</b><br />' + 'Gini Coefficient: ' + props.gini_coefficient + '<br>' 
+        '<b>' + props.name + '</b><p>'    
+                                          + 'Gini Coefficient: ' + props.gini_coefficient + '<br>' 
                                           + 'Global Hunger Index: ' + props.global_hunger_index + '<br>'
                                           + 'Cigarette Consumption per capita: ' + props.cigarette_consumption_per_capita + '<br>'
                                           + 'Land devoted to growing tobacco: ' + props.land_devoted_to_tobacco + '<br>'
-                                          + 'sources: ' + props.sources
+                                          + 'sources: ' + props.sources + '</p>'
         : '<i>Hint:</i> Move Mouse over a coloured area,<br />click the icons.');
 };
 

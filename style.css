@@ -1,5 +1,18 @@
 /* Styles go here */
 
+p {
+  margin: 0;
+  margin-top: 1em;
+}
+
+h2 {
+  margin: 0;
+}
+
+.modal-header a[href="#"] {
+  float: right;
+}
+
 #map {
   height: 525px;
   width: 750px;
@@ -60,12 +73,12 @@
   background: #fefefe;
   border: #333333 solid 1px;
   border-radius: 5px;
-  margin-left: -200px;
+  /* margin-left: -200px; */
   position: fixed;
-  left: 50%;
+  left: 20%;
   top: -100%;
   z-index: 1000;
-  width: 360px;
+  max-width: 60%;
   -webkit-transform: translate(0, -500%);
   -ms-transform: translate(0, -500%);
   transform: translate(0, -500%);
@@ -75,11 +88,11 @@
   transition: transform 0.3s ease-out;
 }
 .modal-body {
-  padding: 20px;
+  padding: 0 1em 1em;
 }
 .modal-header,
 .modal-footer {
-  padding: 10px 20px;
+  padding: 1em 1em 0;
 }
 .modal-header {
   border-bottom: #eeeeee solid 1px;
