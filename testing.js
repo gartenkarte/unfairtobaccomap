@@ -1,12 +1,13 @@
-var map = L.map('map').setView( new L.LatLng(20, 10), 2);
-var toner = new L.StamenTileLayer("toner");
-map.addLayer(toner);
+if(L.Browser.retina) var tp = "lr";
+    else var tp = "ls";
+var lyrk = L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=701dcc16672d4781b03ca506db3ef046', {
+    attribution: '<a href="http://geodienste.lyrk.de/copyright">Lizenzinformationen</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
+    maxZoom: 18
+});
 
-var baseLayers = {
-  "Toner": toner
-};
-
-L.control.layers(baseLayers).addTo(map);
+var map = L.map('map', {
+  layers: [lyrk]
+}).setView( new L.LatLng(20, 10), 2);
 
 // POPUPS
 
