@@ -114,9 +114,7 @@ function iso_render_to_array ( countries ) {
     for (var k in countries) {
       var obj = countries[k];
       if (obj.iso_code != null) {
-        var newElement = countries[k].iso_code;
-        
-        countries_ISO.push(newElement);
+        countries_ISO.push(countries[k].iso_code.toLowerCase());
       };
     };
   return countries_ISO;
@@ -158,7 +156,7 @@ function get_And_Merge_Countries_to_geoJSON ( array ) {
     var country = {};
 
     for (i = 0; i <= array.length; ++i) {
-      $.getJSON( array[i] + ".GEOJSON", function( data ) {
+      $.getJSON("countries/" + array[i] + ".geojson", function( data ) {
 
         country = data;
         //console.log(country);
