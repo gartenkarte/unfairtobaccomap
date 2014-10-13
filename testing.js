@@ -92,7 +92,7 @@ $.getJSON( "data.json", function( data ) {
   unfairtobacco = data;
   
   projekte_geojson = render_to_geojson(unfairtobacco.projects);
-  //console.log(projekte_geojson);
+  console.log(projekte_geojson);
 
   var Layer_project = L.geoJson(projekte_geojson, {
       onEachFeature: OnEachFeature
@@ -103,31 +103,35 @@ $.getJSON( "data.json", function( data ) {
 
 
 
-///////////////// hinzufügen und mergen der Länder-GEOJSONs
+///////////////// hinzufügen der Länder-GEOJSONs
 
 
 
-
+// erstellt Array mit ISO-Daten der verwiesenen Länder
 function iso_render_to_array ( countries ) {
     var countries_ISO = [];
 
     for (var k in countries) {
       var obj = countries[k];
-      if (countries.iso_code != null)
-        countries_ISO.push();
-    }
+      if (obj.iso_code != null) {
+        var newElement = countries[k].iso_code;
+        
+        countries_ISO.push(newElement);
+      };
+    };
   return countries_ISO;
-};
+}
 
 
-function merge_countries_geojson (country) {
+/*
+function merge_countries_geojson ( country ) {
   var mergedJSON = {};
   mergedJSON['type'] = 'FeatureCollection';
   mergedJSON['features'] = [];
 
   for (var k in country) {
     var obj = country[k];
-    if (obj.properties.ISO2 != null) {
+    //if (obj.properties.ISO2 != null) {
       var newFeature = {
         "type": "Feature",
         "properties": {
@@ -136,66 +140,75 @@ function merge_countries_geojson (country) {
           "LON": country[k].LON,
           "LAT": country[k].LAT
         },
-        "geometry" {
+        "geometry": {
           "type": "MultiPolygon",
           "coordinates": country[k].coordinates
         }
       };
       mergedJSON['features'].push(newFeature);  
-    };
+   // };
   };
   return mergedJSON;
 }
+*/
 
-
+// get geoJSON anhand des ISO-Array
 function get_And_Merge_Countries_to_geoJSON ( array ) {
+    var countriesMerged = {};
+    var country = {};
 
-    for (i = 0, i <= arrayCountriesISO.length, ++i) {
-      $.getJSON( array[i] + ".geojson", function( data ) {
+    for (i = 0; i <= array.length; ++i) {
+      $.getJSON( array[i] + ".GEOJSON", function( data ) {
 
         country = data;
+        //console.log(country);
 
-        countriesMerged = merge_countries_geojson(country);    
-      }
-  return countriesMerged;
-};
-  
+        //countriesMerged = merge_countries_geojson(country);    
+     // };
+     var Layer_countries = L.geoJson(country, {
+      style: style,
+      //onEachFeature: onEachFeature
+      }).addTo(map);
+
+      });
+    };  
+  //return country;
+}
+
 
 var unfairtobaccoCountries;
 var arrayCountries;
-var geoJsonCountries;
+var geoJsonCountries = {};
 
 $.getJSON( "data.json", function( data ) {
   
   unfairtobacco = data;
   
   arrayCountriesISO = iso_render_to_array(unfairtobacco.countries);
+  //console.log(arrayCountriesISO);
 
   geoJsonCountries = get_And_Merge_Countries_to_geoJSON(arrayCountriesISO);
+  //console.log(geoJsonCountries);
 
-  var Layer_countries = L.geoJson(geoJsonCountries, {
-      onEachFeature: OnEachFeature
-  }).addTo(map);
-
-});
-
-
-
-
-/*
-  var countries;
-
-$.getJSON( "de.geojson", function( data ) {
-  
-  countries = data;
-  
-  var Layer_countries = L.geoJson(countries, {
-      onEachFeature: OnEachFeature
-  }).addTo(map);
-  
+  //var Layer_countries = L.geoJson(geoJsonCountries, {
+  //    onEachFeature: OnEachFeature
+  //}).addTo(map);
 
 });
-*/
 
+
+
+/////////// Länder hervorhoben
+
+function style(feature) {
+    return {
+        fillColor: 'red',
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.8
+    };
+}
 
 
